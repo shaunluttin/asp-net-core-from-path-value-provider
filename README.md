@@ -1,8 +1,6 @@
-# asp-net-core-from-path-value-provider
+Custom ASP.NET Core `[FromPath]` value provider that binds a URI path to a complex model.
 
-Demo of a ASP.NET Core custom value provider that binds a URI path to a complex model.
-
-Usage
+Run the demo
 
     https://github.com/shaunluttin/asp-net-core-from-path-value-provider.git
     dotnet run
