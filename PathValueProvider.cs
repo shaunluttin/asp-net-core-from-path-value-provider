@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Routing;
 
@@ -11,13 +12,16 @@ namespace AspNetCoreUriToAssoc
 
         public PathValueProvider(BindingSource bindingSource, RouteValueDictionary values)
         {
-            if(!values.TryGetValue("path", out var path)) 
+            if(!values.TryGetValue("path", out var path))
             {
                 var msg = "Route value 'path' was not present in the route.";
                 throw new InvalidOperationException(msg);
             }
 
-            _values = (path as string).ToDictionaryFromUriPath();
+            _values = path.ToString().ToDictionaryFromUriPath();
+
+            // alternative with a PathString for better TypeSafety.
+            // _values = new PathString($"/{path}").ToDictionaryFromUriPath();
         }
 
         public bool ContainsPrefix(string prefix) => _values.ContainsKey(prefix);

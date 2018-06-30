@@ -8,7 +8,7 @@ namespace AspNetCoreUriToAssoc
         public Task CreateValueProviderAsync(ValueProviderFactoryContext context)
         {
             var provider = new PathValueProvider(
-                BindingSource.Custom, 
+                BindingSource.Custom,
                 context.ActionContext.RouteData.Values);
 
             context.ValueProviders.Add(provider);
